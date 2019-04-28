@@ -4,6 +4,32 @@
  * @param  {H.Map} map      A HERE Map instance within the application
 
  */
+ function view(idBlock){
+ 	style = document.getElementById(idBlock).style;
+    style.display = (style.display == 'block') ? 'none' : 'block';
+ }
+ function addMarkers() {
+  // create map objects
+  var Hobbycenter_marker = new H.map.Marker({lat:55.7899091,  lng:37.5889767}),      
+      batut_marker = new H.map.Marker({lat:55.800827, lng:37.5923902}),      
+      kvest_marker = new H.map.Marker({lat:55.8044772, lng:37.5824446}),    
+      karaoke_marker = new H.map.Marker({lat:55.783465, lng:37.5723813}),  
+      cinema_marker = new H.map.Marker({lat:55.7775, lng:37.5985873}),  
+      fun_group = new H.map.Group();
+
+  // add markers to the group
+  fun_group.addObjects([Hobbycenter_marker, batut_marker, kvest_marker, karaoke_marker, cinema_marker]);
+  map.addObject(fun_group);
+  fun_group.setVisibility(1);
+
+  
+}
+
+function VisibilityFunGroup() {
+
+}
+
+
 function moveMapToBerlin(map){
   map.setCenter({lat:55.7899, lng:37.5938471});       
   map.setZoom(15);
@@ -48,3 +74,10 @@ var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 // Now use the map as required...
 moveMapToBerlin(map);
+
+//add marker to map
+addMarkers();
+
+var searcForm = document.form.f1;
+
+console.log(searcForm.old);
